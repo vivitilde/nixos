@@ -10,25 +10,30 @@
      };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
+    homeConfigurations."spectra" = home-manager.lib.homeManagerConfiguration {
+    inherit pkgs;
+
+    modules = [ ./home-manager/home.nix];
+    };
     nixosConfigurations = {
       astra = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; };
         modules = [
           ./hosts/astra/configuration.nix
-          inputs.home-manager.nixosModules.default
+          #./home-manager/home.nix
         ];
       };
       umbra = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; };
-	modules = [
-	  ./host/umbra/configuration.nix
-	  inputs.home-manager.nixosModudles.default
+	    modules = [
+          ./host/umbra/configuration.nix
+	      #inputs.home-manager.nixosModules.default
         ];
       };
     };

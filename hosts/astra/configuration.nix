@@ -112,13 +112,6 @@
     ];
   };
 
-  home-manager = {
-  extraSpecialArgs = { inherit inputs; };
-  users = {
-    "spectra" = import ./home.nix;
-    };
-  };
-
   # Install firefox.
   programs.firefox.enable = true;
 
