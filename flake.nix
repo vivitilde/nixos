@@ -32,7 +32,7 @@
       umbra = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; };
 	    modules = [
-          ./host/umbra/configuration.nix
+          ./hosts/umbra/configuration.nix
 	      #inputs.home-manager.nixosModules.default
         ];
       };
