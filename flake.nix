@@ -26,14 +26,12 @@
         specialArgs = { inherit inputs ; };
         modules = [
           ./hosts/astra/configuration.nix
-          #./home-manager/home.nix
         ];
       };
       umbra = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; };
 	    modules = [
           ./hosts/umbra/configuration.nix
-	      #inputs.home-manager.nixosModules.default
         ];
       };
     };
