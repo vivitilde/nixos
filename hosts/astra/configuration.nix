@@ -178,7 +178,7 @@
      quartus-prime-lite
      dnslookup
      github-desktop
-
+     fish neovim vesktop
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
