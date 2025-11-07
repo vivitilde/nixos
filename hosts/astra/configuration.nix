@@ -18,7 +18,7 @@
   programs.steam = {
     enable = true;
 #    dedicatedServer.openFirewall = true;
-#    localNetworkGameTransfers.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
   # KDE Connect
