@@ -16,7 +16,6 @@
     pkgs.neovim
     pkgs.vesktop
     pkgs.fish
-    #nixpkgs-quartus.quartus-prime-lite
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

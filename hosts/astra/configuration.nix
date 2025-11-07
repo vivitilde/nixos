@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      spicetify-nix.nixosModules.spicetify
     ];
 
 
@@ -19,6 +20,17 @@
     enable = true;
 #    dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+  };
+  
+  programs.spicetify = {
+    enable = true;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblockify
+      hidePodcasts
+      shuffle
+    ];
+    theme = spicePkgs.themes.text;
+    #colorScheme = "???" idk yet
   };
 
   # KDE Connect
