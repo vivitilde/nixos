@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      spicetify-nix.nixosModules.spicetify
+      inputs.spicetify-nix.nixosModules.spicetify
     ];
 
 
@@ -22,15 +22,30 @@
     localNetworkGameTransfers.openFirewall = true;
   };
   
-  programs.spicetify = {
+
+# spicetify setup for spotify 
+  programs.spicetify =
+  let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
+  {
     enable = true;
+    theme = spicePkgs.themes.text;
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
       hidePodcasts
       shuffle
     ];
-    theme = spicePkgs.themes.text;
-    #colorScheme = "???" idk yet
+  };
+
+  # OBS setup
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+    obs-vaapi # AMD Hardware Accel
+    obs-vkcapture # vulkan/openGL game capture
+    ];
   };
 
   # KDE Connect
