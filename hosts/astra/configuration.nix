@@ -43,6 +43,7 @@
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
+    obs-pipewire-audio-capture
     obs-vaapi # AMD Hardware Accel
     obs-vkcapture # vulkan/openGL game capture
     ];
@@ -206,6 +207,7 @@
      dnslookup
      github-desktop
      fish neovim vesktop
+     kdePackages.kdenlive
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
