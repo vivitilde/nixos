@@ -205,7 +205,7 @@
      bftpd
      quartus-prime-lite
      dnslookup
-     github-desktop
+     git github-desktop
      fish neovim vesktop
      kdePackages.kdenlive
   ];
