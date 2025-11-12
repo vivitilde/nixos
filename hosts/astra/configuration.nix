@@ -35,6 +35,7 @@
       adblockify
       hidePodcasts
       shuffle
+      keyboardShortcut
     ];
   };
 
