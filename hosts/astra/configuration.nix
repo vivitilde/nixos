@@ -8,7 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.spicetify-nix.nixosModules.spicetify
     ];
+
+  nix.settings.trusted-users = [ "root" "spectra" ];
 
 
 # Flakes
@@ -18,7 +21,35 @@
   programs.steam = {
     enable = true;
 #    dedicatedServer.openFirewall = true;
-#    localNetworkGameTransfers.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+  
+
+# spicetify setup for spotify 
+  programs.spicetify =
+  let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
+  {
+    enable = true;
+    theme = spicePkgs.themes.text;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblockify
+      hidePodcasts
+      shuffle
+      keyboardShortcut
+    ];
+  };
+
+  # OBS setup
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+    obs-pipewire-audio-capture
+    obs-vaapi # AMD Hardware Accel
+    obs-vkcapture # vulkan/openGL game capture
+    ];
   };
 
   # KDE Connect
@@ -112,13 +143,6 @@
     ];
   };
 
-  home-manager = {
-  extraSpecialArgs = { inherit inputs; };
-  users = {
-    "spectra" = import ./home.nix;
-    };
-  };
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -184,8 +208,11 @@
      bftpd
      quartus-prime-lite
      dnslookup
-     github-desktop
-
+     git github-desktop
+     fish neovim vesktop
+     kdePackages.kdenlive
+     devenv
+     home-manager
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
