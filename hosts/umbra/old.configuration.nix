@@ -2,23 +2,39 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+
+# Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+# Steam
+  programs.steam = {
+    enable = true;
+#    dedicatedServer.openFirewall = true;
+#    localNetworkGameTransfers.openFirewall = true;
+  };
+
+  # KDE Connect
+  programs.kdeconnect.enable = true;
+
+  # OpenRGB
+  services.hardware.openrgb.enable = true;
+
+  # Flatpak
+  services.flatpak.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "umbra"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -54,6 +70,9 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # Enabling Hyprland
+  programs.hyprland.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -61,10 +80,10 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -72,7 +91,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -102,12 +121,77 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     github-desktop
-     git
-     fish
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+     neovim
+     kitty
+     fish
+     vesktop
+     obsidian
+     konsave
+     openrgb-with-all-plugins
+     # screen copy for android manip
+     scrcpy
+     # Protonvpn GUI client
+     protonvpn-gui
+     # NAT-PMP client for portforwarding protonvpn
+     libnatpmp
+     deluge
+     mpv
+     haruna 
+     reaper
+     element-desktop
+     nmap
+     #wayland vnc client
+     wlvncc
+     krita
+     # it works !!!
+     xivlauncher
+     # r2mod manager, here for gtfo
+     r2modman
+     # moonlight, streaming client
+     moonlight-qt
+     gimp
+     unrar
+     gmad
+     p7zip
+     # auto clicker
+     xclicker
+     # shows mouse refresh rate
+     evhz
+     # rust stuff
+     rustc
+     cargo
+     binutils gcc gnumake openssl pkg-config
+     # vintage story (game)
+     vintagestory     
+     # installing gtk to make a hud overlay work for xiv
+     gtk3
+     python3
+     quartus-prime-lite
+     neofetch
+     # gh stuff
+     git
+     github-desktop
+     gh
+     speedcrunch
+     wineWowPackages.waylandFull
+     libreoffice
+     mars-mips
   ];
+     nixpkgs.config.permittedInsecurePackages = [
+     "dotnet-runtime-7.0.20"
+];
+ 
+
+  services.deluge = {
+    enable = true;
+    openFirewall = true;
+    };
+
+
+
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -123,7 +207,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 59543 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -134,6 +218,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
