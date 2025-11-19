@@ -11,6 +11,8 @@
       inputs.spicetify-nix.nixosModules.spicetify
     ];
 
+  nix.settings.trusted-users = [ "root" "spectra" ];
+
 
 # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -209,6 +211,8 @@
      git github-desktop
      fish neovim vesktop
      kdePackages.kdenlive
+     devenv
+     home-manager
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"

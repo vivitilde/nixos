@@ -9,6 +9,34 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+  
+  programs.radio-active.enable = true;
+
+  programs.clock-rs = {
+  enable = true;
+
+  settings = {
+    general = {
+      #color = "magenta";
+      interval = 250;
+      blink = true;
+      bold = true;
+    };
+
+    position = {
+      horizontal = "center";
+      vertical = "center";
+    };
+
+    date = {
+      fmt = "%A, %B %d, %Y";
+      use_12h = true;
+      #utc = true;
+      hide_seconds = false;
+      };
+    };
+  };
+
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -16,7 +44,7 @@
     pkgs.neovim
     pkgs.vesktop
     pkgs.fish
-
+    
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -64,7 +92,7 @@
   #  /etc/profiles/per-user/spectra/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
 
