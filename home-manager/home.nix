@@ -10,6 +10,13 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   
+  programs.git = {
+    enable = true;
+    settings.user.name = "dark star";
+    settings.user.email = "12040089+vivitilde@users.noreply.github.com";
+  };
+  programs.gitui.enable = true;
+
   programs.radio-active.enable = true;
 
   programs.clock-rs = {
