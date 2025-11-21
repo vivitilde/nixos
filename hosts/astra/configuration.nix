@@ -14,7 +14,6 @@
 
   nix.settings.trusted-users = [ "root" "spectra" ];
 
-
 # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -24,23 +23,6 @@
 #    dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
-  
-
-# spicetify setup for spotify 
-#  programs.spicetify =
-#  let
-#    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-#  in
-#  {
-#    enable = true;
-#    theme = spicePkgs.themes.text;
-#    enabledExtensions = with spicePkgs.extensions; [
-#      adblockify
-#      hidePodcasts
-#      shuffle
-#      keyboardShortcut
-#    ];
-#  };
 
   # OBS setup
 
