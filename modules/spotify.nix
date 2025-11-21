@@ -1,5 +1,5 @@
-{ pkgs, inputs, ...}: {
-  # spicetify setup for spotify
+{ config, pkgs, inputs, spicePkgs, ...}: {
+ # spicetify setup for spotify
   programs.spicetify =
   let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};

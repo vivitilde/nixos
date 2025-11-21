@@ -22,6 +22,10 @@
   {
     homeConfigurations."spectra" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
+      extraSpecialArgs = {
+        inherit inputs;
+	inherit spicePkgs;
+      }; 
       modules = [ ./home-manager/home.nix];
     };
     nixosConfigurations = {
