@@ -13,6 +13,8 @@
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  #virtualbox
+  virtualisation.virtualbox.host.enable = true;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
