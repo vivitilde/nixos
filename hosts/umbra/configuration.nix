@@ -113,6 +113,7 @@
      fish
      vesktop
      home-manager
+     quartus-prime-lite
   #  wget
   ];
 
