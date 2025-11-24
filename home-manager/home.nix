@@ -22,6 +22,8 @@
   };
   programs.gitui.enable = true;
 
+  programs.kitty.enable = true;
+
   programs.radio-active.enable = true;
 
   programs.clock-rs = {
