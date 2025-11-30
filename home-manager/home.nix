@@ -15,6 +15,13 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   
+  services.mpd = {
+    enable = true;
+    musicDirectory = "~/Music";
+    };
+
+  programs.rmpc.enable = true;
+
   programs.git = {
     enable = true;
     settings.user.name = "dark star";

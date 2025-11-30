@@ -110,6 +110,7 @@
      fish
      vesktop
      home-manager
+     virtualbox
   #  wget
   ];
 
