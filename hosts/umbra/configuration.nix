@@ -11,8 +11,15 @@
       ../../modules/spotify.nix
       inputs.spicetify-nix.nixosModules.spicetify
     ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  programs.steam = {
+    enable = true;
+#    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+  
   #virtualbox
   virtualisation.virtualbox.host.enable = true;
   # Bootloader.
