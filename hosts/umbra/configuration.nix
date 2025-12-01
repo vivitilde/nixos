@@ -101,6 +101,7 @@
     packages = with pkgs; [
       kdePackages.kate
       virtualbox
+      bottles
     #  thunderbird
     ];
   };
