@@ -196,6 +196,7 @@
      kdePackages.kdenlive
      devenv
      home-manager
+     obsidian
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
