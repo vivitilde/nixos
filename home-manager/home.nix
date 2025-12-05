@@ -30,6 +30,11 @@
   };
   programs.gitui.enable = true;
 
+  programs.direnv = {
+  enable = true;
+  enableFishIntegration = true;
+  };
+
 #  programs.obsidian.enable = true;
   programs.radio-active.enable = true;
 
