@@ -101,6 +101,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # protonvpn setup
+  networking.firewall.checkReversePath = false;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -110,7 +113,12 @@
      fish
      vesktop
      home-manager
+<<<<<<< Updated upstream
      virtualbox
+=======
+     quartus-prime-lite
+     wireguard-tools protonvpn-gui
+>>>>>>> Stashed changes
   #  wget
   ];
 
