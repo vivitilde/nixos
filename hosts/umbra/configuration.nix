@@ -111,6 +111,7 @@
 #    dedicatedServer.openFirewall = true;
      localNetworkGameTransfers.openFirewall = true;
   };
+  networking.firewall.checkReversePath = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -136,7 +137,7 @@
   # Graphics settings
 
   hardware.graphics.enable = true;
- hardware.graphics.enable32Bit = true;
+  hardware.graphics.enable32Bit = true;
 
   # Use the appropriate drivers for your setup (e.g., "nvidia", "amdgpu", "modesetting")
   services.xserver.videoDrivers = [ "nvidia" "modesetting" ]; # Example for Intel iGPU and Nvidia dGPU
