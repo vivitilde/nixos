@@ -104,6 +104,13 @@
   # protonvpn setup
    networking.firewall.checkReversePath = false;
 
+# Steam
+  programs.steam = {
+    enable = true;
+#    dedicatedServer.openFirewall = true;
+     localNetworkGameTransfers.openFirewall = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -117,8 +124,34 @@
      quartus-prime-lite
      wireguard-tools protonvpn-gui
      wget
-     steam
   ];
+
+  services.deluge = {
+    enable = true;
+    dataDir = "/home/spectra/Downloads/deluge";
+    openFirewall = true;
+  };
+
+  # Graphics settings
+
+  hardware.graphics.enable = true;
+ hardware.graphics.enable32Bit = true;
+
+  # Use the appropriate drivers for your setup (e.g., "nvidia", "amdgpu", "modesetting")
+  services.xserver.videoDrivers = [ "nvidia" "modesetting" ]; # Example for Intel iGPU and Nvidia dGPU
+
+  # Specific Nvidia PRIME configuration
+  hardware.nvidia.open = false; # Use closed-source drivers for better compatibility
+
+  hardware.nvidia.prime.offload.enable = true;
+  # You need to find your PCI bus IDs using the `lspci` command
+  # Example IDs (replace with your actual IDs):
+  hardware.nvidia.prime.intelBusId = "PCI:0:2:0"; # iGPU bus ID
+  hardware.nvidia.prime.nvidiaBusId = "PCI:1:0:0"; # dGPU bus ID
+
+  # Enable power management for the dGPU to turn it off when not in use (Turing GPUs or newer)
+  hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.powerManagement.finegrained = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
