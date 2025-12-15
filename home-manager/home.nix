@@ -11,11 +11,16 @@
 
   imports = [
 #    ../modules/spotify.nix
+    inputs.textfox.homeManagerModules.default
     ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   
+  textfox = {
+    enable = true;
+    profile = "default";
+  };
   services.mpd = {
     enable = true;
     musicDirectory = "~/Music";
@@ -73,6 +78,7 @@
     pkgs.vesktop
     pkgs.fish
     pkgs.nvitop
+    pkgs.kitty
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
