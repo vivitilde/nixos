@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/spotify.nix
+     #../../modules/spotify.nix
       
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -21,7 +21,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "umbra"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -102,7 +102,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # protonvpn setup
-  networking.firewall.checkReversePath = false;
+   networking.firewall.checkReversePath = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -113,13 +113,11 @@
      fish
      vesktop
      home-manager
-<<<<<<< Updated upstream
-     virtualbox
-=======
+    # virtualbox
      quartus-prime-lite
      wireguard-tools protonvpn-gui
->>>>>>> Stashed changes
-  #  wget
+     wget
+     steam
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
