@@ -30,6 +30,30 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth = {
+  enable = true;
+  powerOnBoot = true;
+  settings = {
+    General = {
+      # Shows battery charge of connected devices on supported
+      # Bluetooth adapters. Defaults to 'false'.
+      Experimental = true;
+      # When enabled other devices can connect faster to us, however
+      # the tradeoff is increased power consumption. Defaults to
+      # 'false'.
+      FastConnectable = true;
+    };
+    Policy = {
+      # Enable all controllers when they are found. This includes
+      # adapters present on start as well as adapters that are plugged
+      # in later on. Defaults to 'true'.
+      AutoEnable = true;
+      };
+    };
+  };
+  programs.kdeconnect.enable = true;
+
   # Set your time zone.
   # time.timeZone = "America/New_York";
   time.timeZone = "Europe/Zurich";
@@ -54,7 +78,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = { 
+    enable = true;
+    theme = "sddm-astronaut-theme";
+    #extraPackages = [ sddm-astronaut ];
+  };
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -97,7 +125,9 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -111,7 +141,6 @@
 #    dedicatedServer.openFirewall = true;
      localNetworkGameTransfers.openFirewall = true;
   };
-  networking.firewall.checkReversePath = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -126,6 +155,10 @@
      quartus-prime-lite
      wireguard-tools protonvpn-gui
      wget
+     kdePackages.qtmultimedia
+     kdePackages.sddm-kcm
+     kdePackages.plasma-browser-integration
+     sddm-astronaut
   ];
 
   services.deluge = {
