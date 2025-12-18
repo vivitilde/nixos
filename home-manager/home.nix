@@ -7,7 +7,7 @@
   home.homeDirectory = "/home/spectra";
   home.stateVersion = "25.05"; 
 
-#  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
 #    ../modules/spotify.nix
@@ -42,7 +42,7 @@
   enableFishIntegration = true;
   };
 
-#  programs.obsidian.enable = true;
+  programs.obsidian.enable = true;
   programs.radio-active.enable = true;
 
   programs.clock-rs = {

@@ -128,6 +128,7 @@
   programs.firefox = {
     enable = true;
   };
+  nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -162,7 +163,6 @@
 
   services.deluge = {
     enable = true;
-    dataDir = "/home/spectra/Downloads/deluge";
     openFirewall = true;
   };
 
