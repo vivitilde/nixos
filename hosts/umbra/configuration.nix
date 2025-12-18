@@ -149,7 +149,6 @@
      github-desktop
      git
      fish
-     vesktop
      home-manager
     # virtualbox
      quartus-prime-lite

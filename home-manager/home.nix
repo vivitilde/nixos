@@ -70,15 +70,25 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    settings = {
+      confirm_os_window_close = 0;
+      dynamic_background_opacity = true;
+      enable_audio_bell = false;
+      background_opacity = "0.5";
+      background_blur = 5;
+      shell = "fish";
+    };
+  };
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
     pkgs.neovim
-    pkgs.vesktop
+    pkgs.legcord
     pkgs.fish
     pkgs.nvitop
-    pkgs.kitty
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
