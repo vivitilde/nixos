@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [ 
     spotify
   ];
-  programs.spicetify =
+  programs.spicetify = 
   let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in

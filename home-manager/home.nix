@@ -7,21 +7,28 @@
   home.homeDirectory = "/home/spectra";
   home.stateVersion = "25.05"; 
 
-#  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
 #    ../modules/spotify.nix
+    inputs.textfox.homeManagerModules.default
     ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   
+  textfox = {
+    enable = true;
+    profile = "default";
+  };
   services.mpd = {
     enable = true;
     musicDirectory = "~/Music";
     };
 
   programs.rmpc.enable = true;
+
+  programs.btop.enable = true;
 
   programs.git = {
     enable = true;
@@ -35,7 +42,7 @@
   enableFishIntegration = true;
   };
 
-#  programs.obsidian.enable = true;
+  programs.obsidian.enable = true;
   programs.radio-active.enable = true;
 
   programs.clock-rs = {
@@ -63,14 +70,27 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    settings = {
+      confirm_os_window_close = 0;
+      dynamic_background_opacity = true;
+      enable_audio_bell = false;
+      background_opacity = "0.5";
+      background_blur = 5;
+      shell = "fish";
+    };
+  };
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
     pkgs.neovim
-    pkgs.vesktop
+    pkgs.legcord
     pkgs.fish
-    
+    pkgs.nvitop
+    pkgs.mpv pkgs.haruna
+    pkgs.scrcpy
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

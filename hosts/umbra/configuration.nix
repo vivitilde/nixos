@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.spicetify-nix.nixosModules.spicetify
       ../../modules/spotify.nix
-      
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -21,7 +21,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "umbra"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -30,8 +30,33 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth = {
+  enable = true;
+  powerOnBoot = true;
+  settings = {
+    General = {
+      # Shows battery charge of connected devices on supported
+      # Bluetooth adapters. Defaults to 'false'.
+      Experimental = true;
+      # When enabled other devices can connect faster to us, however
+      # the tradeoff is increased power consumption. Defaults to
+      # 'false'.
+      FastConnectable = true;
+    };
+    Policy = {
+      # Enable all controllers when they are found. This includes
+      # adapters present on start as well as adapters that are plugged
+      # in later on. Defaults to 'true'.
+      AutoEnable = true;
+      };
+    };
+  };
+  programs.kdeconnect.enable = true;
+
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  # time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Zurich";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -53,7 +78,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = { 
+    enable = true;
+    theme = "sddm-astronaut-theme";
+    #extraPackages = [ sddm-astronaut ];
+  };
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -96,10 +125,23 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+  };
+  nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # protonvpn setup
+   networking.firewall.checkReversePath = false;
+
+# Steam
+  programs.steam = {
+    enable = true;
+#    dedicatedServer.openFirewall = true;
+     localNetworkGameTransfers.openFirewall = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -108,11 +150,42 @@
      github-desktop
      git
      fish
-     vesktop
      home-manager
-     virtualbox
-  #  wget
+    # virtualbox
+     quartus-prime-lite
+     wireguard-tools protonvpn-gui
+     wget
+     kdePackages.qtmultimedia
+     kdePackages.sddm-kcm
+     kdePackages.plasma-browser-integration
+     sddm-astronaut
   ];
+
+  services.deluge = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  # Graphics settings
+
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+
+  # Use the appropriate drivers for your setup (e.g., "nvidia", "amdgpu", "modesetting")
+  services.xserver.videoDrivers = [ "nvidia" "modesetting" ]; # Example for Intel iGPU and Nvidia dGPU
+
+  # Specific Nvidia PRIME configuration
+  hardware.nvidia.open = false; # Use closed-source drivers for better compatibility
+
+  hardware.nvidia.prime.offload.enable = true;
+  # You need to find your PCI bus IDs using the `lspci` command
+  # Example IDs (replace with your actual IDs):
+  hardware.nvidia.prime.intelBusId = "PCI:0:2:0"; # iGPU bus ID
+  hardware.nvidia.prime.nvidiaBusId = "PCI:1:0:0"; # dGPU bus ID
+
+  # Enable power management for the dGPU to turn it off when not in use (Turing GPUs or newer)
+  hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.powerManagement.finegrained = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
