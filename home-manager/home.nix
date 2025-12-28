@@ -30,6 +30,8 @@
 
   programs.btop.enable = true;
 
+  programs.ranger.enable = true;
+
   programs.git = {
     enable = true;
     settings.user.name = "dark star";
@@ -88,7 +90,6 @@
     pkgs.neovim
     pkgs.legcord
     pkgs.fish
-    pkgs.nvitop
     pkgs.mpv pkgs.haruna
     pkgs.scrcpy
 
