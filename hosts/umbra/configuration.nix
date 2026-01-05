@@ -133,7 +133,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # protonvpn setup
-   networking.firewall.checkReversePath = false;
+  networking.firewall.checkReversePath = false;
 
 # Steam
   programs.steam = {
