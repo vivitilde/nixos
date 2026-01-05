@@ -11,16 +11,16 @@
 
   imports = [
 #    ../modules/spotify.nix
-    inputs.textfox.homeManagerModules.default
+#    inputs.textfox.homeManagerModules.default
     ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   
-  textfox = {
-    enable = true;
-    profile = "default";
-  };
+ # textfox = {
+ #   enable = true;
+ #   profile = "default";
+ # };
   services.mpd = {
     enable = true;
     musicDirectory = "~/Music";
@@ -29,6 +29,8 @@
   programs.rmpc.enable = true;
 
   programs.btop.enable = true;
+
+  programs.ranger.enable = true;
 
   programs.git = {
     enable = true;
@@ -77,7 +79,7 @@
       dynamic_background_opacity = true;
       enable_audio_bell = false;
       background_opacity = "0.5";
-      background_blur = 5;
+      background_blur = 1;
       shell = "fish";
     };
   };
@@ -88,7 +90,6 @@
     pkgs.neovim
     pkgs.legcord
     pkgs.fish
-    pkgs.nvitop
     pkgs.mpv pkgs.haruna
     pkgs.scrcpy
 

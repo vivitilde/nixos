@@ -14,6 +14,20 @@
 
   nix.settings.trusted-users = [ "root" "spectra" ];
 
+# ssh server, temporary
+  services.openssh = {
+    enable = true;
+    ports = [ 5432 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "spectra" ];
+    };
+  };
+
+  #services.fail2ban.enable = true;
+
 # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
