@@ -39,6 +39,9 @@
   };
   programs.gitui.enable = true;
 
+  programs.gh.enable = true;
+  programs.gh.gitCredentialHelper.enable = true;
+
   programs.direnv = {
   enable = true;
   enableFishIntegration = true;
