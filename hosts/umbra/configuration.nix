@@ -55,8 +55,7 @@
   programs.kdeconnect.enable = true;
 
   # Set your time zone.
-  # time.timeZone = "America/New_York";
-  time.timeZone = "Europe/Zurich";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -134,7 +133,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # protonvpn setup
-   networking.firewall.checkReversePath = false;
+  networking.firewall.checkReversePath = false;
 
 # Steam
   programs.steam = {
