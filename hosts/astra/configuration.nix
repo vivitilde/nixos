@@ -196,7 +196,7 @@
      # minecraft
      prismlauncher
      # mod manager 4 cyberpunk
-     nexusmods-app-unfree
+     #nexusmods-app-unfree
      # calc
      gnome-calculator
      wireshark-qt
