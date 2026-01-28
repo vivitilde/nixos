@@ -207,11 +207,12 @@
      dnslookup
      git github-desktop
      fish neovim vesktop
-     kdePackages.kdenlive
+     #kdePackages.kdenlive
      devenv
      home-manager
      obsidian
      retroarch-full
+     heroic gogdl
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
