@@ -213,6 +213,7 @@
      obsidian
      retroarch-full
      heroic gogdl
+     protonplus
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
