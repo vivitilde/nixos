@@ -72,6 +72,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  #proton vpn setting
+  networking.firewall.checkReversePath = false;
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -155,6 +158,10 @@
      # screen copy for android manip
      scrcpy
      # NAT-PMP client for portforwarding protonvpn
+     networkmanager-openvpn
+     wireguard-tools
+     proton-vpn-cli
+     protonvpn-gui
      libnatpmp
      # torrent client
      deluge
