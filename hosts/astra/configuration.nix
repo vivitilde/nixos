@@ -43,6 +43,7 @@
 
   programs.obs-studio = {
     enable = true;
+    enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
     obs-pipewire-audio-capture
     obs-vaapi # AMD Hardware Accel
@@ -207,7 +208,7 @@
      #nexusmods-app-unfree
      # calc
      gnome-calculator
-     wireshark-qt
+     wireshark
      libreoffice
      inetutils
      bftpd
