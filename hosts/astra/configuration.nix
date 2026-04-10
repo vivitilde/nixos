@@ -212,7 +212,6 @@
      libreoffice
      inetutils
      bftpd
-     quartus-prime-lite
      dnslookup
      git github-desktop
      fish neovim vesktop
@@ -223,6 +222,7 @@
      retroarch-full
      heroic gogdl
      protonplus
+     lutris
   ];
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"

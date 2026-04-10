@@ -19,7 +19,7 @@
   
   textfox = {
     enable = true;
-    profile = "default";
+    profiles = ["default"];
   };
   services.mpd = {
     enable = true;
@@ -34,8 +34,8 @@
 
   programs.git = {
     enable = true;
-    settings.user.name = "dark star";
-    settings.user.email = "12040089+vivitilde@users.noreply.github.com";
+   # settings.user.name = "dark star";
+   # settings.user.email = "12040089+vivitilde@users.noreply.github.com";
   };
   programs.gitui.enable = true;
 
