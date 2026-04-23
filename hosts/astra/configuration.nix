@@ -95,6 +95,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  i18n.extraLocales = [ "all" ];
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -223,7 +225,22 @@
      heroic gogdl
      protonplus
      lutris
+     archipelago
   ];
+
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.useEmbeddedBitmaps = true;
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+  ]; 
 #     nixpkgs.config.permittedInsecurePackages = [
 #     "dotnet-runtime-7.0.20"
 #     "libsoup-2.74.3"
