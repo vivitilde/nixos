@@ -27,7 +27,9 @@
         inherit inputs;
 	inherit spicePkgs;
       }; 
-      modules = [ ./home-manager/home.nix];
+      modules = [ 
+        ./home-manager/home.nix
+      ];
     };
     nixosConfigurations = {
       astra = nixpkgs.lib.nixosSystem {

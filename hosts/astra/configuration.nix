@@ -14,17 +14,17 @@
 
   nix.settings.trusted-users = [ "root" "spectra" ];
 
-# ssh server, temporary
-#  services.openssh = {
-#    enable = true;
-#    ports = [ 5432 ];
-#    settings = {
-#      PasswordAuthentication = false;
-#      KbdInteractiveAuthentication = false;
-#      PermitRootLogin = "no";
-#      AllowUsers = [ "spectra" ];
-#    };
-#  };
+# ssh server, hopefullyyyyyyyy new
+  services.openssh = {
+    enable = true;
+    ports = [ 5123 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "spectra" ];
+    };
+  };
 
   #services.fail2ban.enable = true;
 
@@ -165,7 +165,7 @@
      networkmanager-openvpn
      wireguard-tools
      proton-vpn-cli
-     protonvpn-gui
+     proton-vpn
      libnatpmp
      # torrent client
      deluge
@@ -217,15 +217,18 @@
      dnslookup
      git github-desktop
      fish neovim vesktop
-     #kdePackages.kdenlive
+     kdePackages.kdenlive
+     kdePackages.kweathercore
      devenv
      home-manager
      obsidian
-     retroarch-full
+     azahar
      heroic gogdl
      protonplus
      lutris
-     archipelago
+     crossmacro
+     nix-ld
+     filezilla
   ];
 
   fonts.fontDir.enable = true;
@@ -251,7 +254,7 @@
   services.deluge = {
     enable = true;
     openFirewall = true;
-    };
+  };
 
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -266,9 +269,15 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
+  # services.vsftpd = { 
+  #  enable = true;
+  #  localUsers = true;
+  #  userlist = ["spectra"];
+  #  writeEnable = true;
+  # };
+  
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 59543 ];
+  networking.firewall.allowedTCPPorts = [ 59543 5123 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

@@ -24,10 +24,19 @@
   services.mpd = {
     enable = true;
     musicDirectory = "~/Music";
-    };
+    dataDir = "/home/spectra/mpd";
+    playlistDirectory = "/home/spectra/mpd/playlists";
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+	name "PipeWire Sound Server"
+      }
+  '';
+  };
 
-  programs.rmpc.enable = true;
-
+  programs.rmpc = {
+    enable = true;
+  };
   programs.btop.enable = true;
 
   programs.ranger.enable = true;
