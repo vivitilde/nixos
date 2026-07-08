@@ -229,6 +229,10 @@
      crossmacro
      nix-ld
      filezilla
+     # RSS Stuff
+     nom
+     rssguard
+     radare2
   ];
 
   fonts.fontDir.enable = true;
