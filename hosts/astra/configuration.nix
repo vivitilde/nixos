@@ -219,6 +219,7 @@
      fish neovim vesktop
      kdePackages.kdenlive
      kdePackages.kweathercore
+     kdePackages.partitionmanager
      devenv
      home-manager
      obsidian
