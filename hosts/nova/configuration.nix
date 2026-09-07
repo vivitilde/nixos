@@ -16,11 +16,13 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
  
   # mic fix?
-  services.pipewire.wireplumber.extraConfig.no-ucm = {
-    "monitor.alsa.properties" = {
-      "alsa.use-ucm" = false;
-    };
-  };
+#  services.pipewire.wireplumber.extraConfig.no-ucm = {
+#    "monitor.alsa.properties" = {
+#      "alsa.use-ucm" = false;
+#    };
+#  };
+
+  boot.blacklistedKernelModules = ["snd_acp70" "snd_acp_pci"];
 
 
   # Use the systemd-boot EFI boot loader.
