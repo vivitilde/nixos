@@ -219,6 +219,7 @@
      git github-desktop
      fish neovim vesktop
      kdePackages.kdenlive
+     kdePackages.isoimagewriter
      kdePackages.kweathercore
      kdePackages.partitionmanager
      devenv
