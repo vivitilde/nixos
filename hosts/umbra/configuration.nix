@@ -151,7 +151,6 @@
      fish
      home-manager
     # virtualbox
-     quartus-prime-lite
      wireguard-tools protonvpn-gui
      wget
      kdePackages.qtmultimedia
