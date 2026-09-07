@@ -44,6 +44,12 @@
 	    ./hosts/umbra/configuration.nix
         ];
       };
+      nova = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs ; };
+	  modules = [
+	    ./hosts/nova/configuration.nix
+        ];
+      };
     };
   };
 }
